@@ -12,7 +12,7 @@ import (
 )
 
 func Decimal(value float64) float64 {
-	value, _ = strconv.ParseFloat(fmt.Sprintf("%.4f", value), 64)
+	value, _ = strconv.ParseFloat(fmt.Sprintf("%.6f", value), 64)
 	return value
 }
 
