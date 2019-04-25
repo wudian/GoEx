@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/wudian/GoEx"
 	"log"
 	"math/big"
 	"net/http"
@@ -12,6 +11,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	. "github.com/wudian/GoEx"
 )
 
 var HBPOINT = NewCurrency("HBPOINT", "")
@@ -65,6 +66,7 @@ type HuoBiProSymbol struct {
 func NewHuoBiPro(client *http.Client, apikey, secretkey, accountId string) *HuoBiPro {
 	hbpro := new(HuoBiPro)
 	hbpro.baseUrl = API_BASE_URL
+	log.Println(API_BASE_URL)
 	hbpro.httpClient = client
 	hbpro.accessKey = apikey
 	hbpro.secretKey = secretkey
@@ -108,14 +110,14 @@ func (hbpro *HuoBiPro) GetAccountInfo(acc string) (AccountInfo, error) {
 	hbpro.buildPostForm("GET", path, params)
 
 	//log.Println(hbpro.baseUrl + path + "?" + params.Encode())
-	url := hbpro.baseUrl+path+"?"+params.Encode()
+	url := hbpro.baseUrl + path + "?" + params.Encode()
 	respmap, err := HttpGet(hbpro.httpClient, url)
 	if err != nil {
-		return AccountInfo{State:"not working"}, err
+		return AccountInfo{State: "not working"}, err
 	}
 	//log.Println(respmap)
 	if respmap["status"].(string) != "ok" {
-		return AccountInfo{State:"not working"}, errors.New(respmap["err-code"].(string))
+		return AccountInfo{State: "not working"}, errors.New(respmap["err-code"].(string))
 	}
 
 	var info AccountInfo
@@ -464,14 +466,14 @@ func (hbpro *HuoBiPro) GetTicker(currencyPair CurrencyPair) (*Ticker, error) {
 	ticker.Buy = ToFloat64(bid[0])
 	ticker.Sell = ToFloat64(ask[0])
 	ticker.Last = ToFloat64(tickmap["close"])
-	ticker.Date = ToInt64(respmap["ts"])/1000
+	ticker.Date = ToInt64(respmap["ts"]) / 1000
 
 	return ticker, nil
 }
 
 func (hbpro *HuoBiPro) GetDepth(size int, currency CurrencyPair) (*Depth, error) {
 	//url := hbpro.baseUrl + "/market/depth?symbol=%s&type=step0"
-	url := hbpro.baseUrl + "/market/depth?symbol=" + strings.ToLower(currency.ToSymbol(""))+"&type=step1"
+	url := hbpro.baseUrl + "/market/depth?symbol=" + strings.ToLower(currency.ToSymbol("")) + "&type=step1"
 	respmap, err := HttpGet(hbpro.httpClient, url)
 	if err != nil {
 		return nil, err
@@ -485,7 +487,7 @@ func (hbpro *HuoBiPro) GetDepth(size int, currency CurrencyPair) (*Depth, error)
 
 	dep := hbpro.parseDepthData(tick)
 	dep.Pair = currency
-	dep.Date = ToInt64(respmap["ts"])/1000
+	dep.Date = ToInt64(respmap["ts"]) / 1000
 	return dep, nil
 }
 
