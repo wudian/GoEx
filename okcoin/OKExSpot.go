@@ -3,10 +3,11 @@ package okcoin
 import (
 	"encoding/json"
 	"errors"
-	. "github.com/wudian/GoEx"
 	"net/http"
 	"net/url"
 	"strconv"
+
+	. "github.com/wudian/GoEx"
 )
 
 type OKExSpot struct {
@@ -15,7 +16,7 @@ type OKExSpot struct {
 
 func NewOKExSpot(client *http.Client, accesskey, secretkey string) *OKExSpot {
 	return &OKExSpot{
-		OKCoinCN_API: OKCoinCN_API{client, accesskey, secretkey, "https://www.okex.com/api/v1/"}}
+		OKCoinCN_API: OKCoinCN_API{client, accesskey, secretkey, API_BASE_URL + path}}
 }
 
 func (ctx *OKExSpot) GetExchangeName() string {

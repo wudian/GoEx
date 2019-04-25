@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/wudian/GoEx"
 	"log"
 	"net/http"
 	"net/url"
 	"strconv"
 	"time"
+
+	. "github.com/wudian/GoEx"
 )
 
 var (
