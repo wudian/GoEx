@@ -1,8 +1,8 @@
 package builder
 
 import (
-	"github.com/wudian/GoEx"
 	"github.com/stretchr/testify/assert"
+	"github.com/wudian/GoEx"
 	"testing"
 )
 

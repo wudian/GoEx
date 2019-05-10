@@ -8,7 +8,6 @@ import (
 
 var cb = New(http.DefaultClient, "", "")
 
-
 func TestCoinBig_BuildSigned(t *testing.T) {
 	return
 	//params := url.Values{}

@@ -29,7 +29,7 @@ const (
 
 var (
 	API_BASE_URL = "https://www.okex.com"
-	path = "/api/v1/"
+	path         = "/api/v1/"
 )
 
 type OKCoinCN_API struct {
@@ -66,7 +66,7 @@ var _INERNAL_KLINE_PERIOD_CONVERTER = map[int]string{
 //}
 
 func NewOKCoinCn(client *http.Client, api_key, secret_key string) *OKCoinCN_API {
-	return &OKCoinCN_API{client, api_key, secret_key, API_BASE_URL+path}
+	return &OKCoinCN_API{client, api_key, secret_key, API_BASE_URL + path}
 }
 
 func (ctx *OKCoinCN_API) buildPostForm(postForm *url.Values) error {

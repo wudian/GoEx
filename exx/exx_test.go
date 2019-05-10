@@ -7,7 +7,6 @@ import (
 	"testing"
 )
 
-
 var (
 	api_key       = "yourAccessKey"
 	api_secretkey = "yourSecretKey"

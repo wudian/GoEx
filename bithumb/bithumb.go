@@ -3,6 +3,7 @@ package bithumb
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	. "github.com/wudian/GoEx"
 	"log"
@@ -11,7 +12,6 @@ import (
 	"sort"
 	"strconv"
 	"time"
-	"errors"
 )
 
 type Bithumb struct {
@@ -304,7 +304,7 @@ func (bit *Bithumb) GetTicker(currency CurrencyPair) (*Ticker, error) {
 		Vol:  ToFloat64(datamap["units_traded"]),
 		Buy:  ToFloat64(datamap["buy_price"]),
 		Sell: ToFloat64(datamap["sell_price"]),
-		Date: ToInt64(datamap["date"])/1000,
+		Date: ToInt64(datamap["date"]) / 1000,
 	}, nil
 }
 

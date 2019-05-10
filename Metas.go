@@ -49,21 +49,21 @@ type Ticker struct {
 	High float64      `json:"high,string"`
 	Low  float64      `json:"low,string"`
 	Vol  float64      `json:"vol,string"`
-	Date int64       `json:"date"` // 单位:秒(second)
+	Date int64        `json:"date"` // 单位:秒(second)
 }
 
-func NewTicker() *Ticker  {
+func NewTicker() *Ticker {
 	var tk Ticker
 	tk.Last = 0
 	tk.Buy = 0
 	tk.Sell = 0
-	tk.High =0
+	tk.High = 0
 	tk.Low = 0
-	tk.Vol=0
+	tk.Vol = 0
 	return &tk
 }
 
-func (tk *Ticker)Add(ticker *Ticker)  {
+func (tk *Ticker) Add(ticker *Ticker) {
 	tk.Last += ticker.Last
 	tk.Buy += ticker.Buy
 	tk.Sell += ticker.Sell
@@ -71,8 +71,9 @@ func (tk *Ticker)Add(ticker *Ticker)  {
 	tk.Low += ticker.Low
 	tk.Vol += ticker.Vol
 }
+
 //division
-func (tk *Ticker)Div(n float64) *Ticker {
+func (tk *Ticker) Div(n float64) *Ticker {
 	tk.Last /= n
 	tk.Buy /= n
 	tk.Sell /= n
@@ -83,7 +84,7 @@ func (tk *Ticker)Div(n float64) *Ticker {
 }
 
 //multiplication
-func (tk *Ticker)Multi(n float64) *Ticker {
+func (tk *Ticker) Multi(n float64) *Ticker {
 	tk.Last *= n
 	tk.Buy *= n
 	tk.Sell *= n
@@ -93,7 +94,7 @@ func (tk *Ticker)Multi(n float64) *Ticker {
 	return tk
 }
 
-func (tk *Ticker)Decimal() *Ticker {
+func (tk *Ticker) Decimal() *Ticker {
 	tk.Last = Decimal(tk.Last)
 	tk.Buy = Decimal(tk.Buy)
 	tk.Sell = Decimal(tk.Sell)
@@ -136,14 +137,14 @@ type Depth struct {
 	ContractType string //for future
 	Pair         CurrencyPair
 	//UTime        time.Time
-	Date int64       // 单位:秒(second)
+	Date int64 // 单位:秒(second)
 	AskList,
 	BidList DepthRecords
 }
 
 func NewDepth() *Depth {
 	var depth Depth
-	for i:=0; i<10; i++ {
+	for i := 0; i < 10; i++ {
 		var dr DepthRecord
 		dr.Price = ToFloat64(0)
 		dr.Amount = ToFloat64(0)

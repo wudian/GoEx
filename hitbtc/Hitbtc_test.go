@@ -1,8 +1,8 @@
 package hitbtc
 
 import (
-	"github.com/wudian/GoEx"
 	"github.com/stretchr/testify/require"
+	"github.com/wudian/GoEx"
 	"net/http"
 	"testing"
 )

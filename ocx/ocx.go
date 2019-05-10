@@ -164,7 +164,7 @@ func (o *Ocx) placeOrder(orderType, orderSide, amount, price string, pair Curren
 	//params.Set("foo", "bar")
 
 	signed := o.buildSigned(method, path, &params)
-	
+
 	f := fmt.Sprintf("access_key=%s&tonce=%s&signature=%s&market_code=%s&price=%s&side=%s&volume=%s",
 		o.accessKey, tonce, signed, strings.ToLower(pair.ToSymbol("")), price, orderSide, amount)
 	resp, err := HttpPostForm3(o.httpClient, uri, f, nil)

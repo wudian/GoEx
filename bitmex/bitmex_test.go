@@ -1,12 +1,12 @@
 package bitmex
 
 import (
-	"github.com/wudian/GoEx"
 	"github.com/stretchr/testify/assert"
-	"net/http"
-	"testing"
-	"net/url"
+	"github.com/wudian/GoEx"
 	"net"
+	"net/http"
+	"net/url"
+	"testing"
 	"time"
 )
 

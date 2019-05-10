@@ -25,7 +25,7 @@ const (
 	API_V2       = "api/2/"
 	SYMBOLS_URI  = "public/symbol"
 	TICKER_URI   = "public/ticker/"
-	KLINE_URI = ""
+	KLINE_URI    = ""
 	BALANCE_URI  = "account/balance"
 	ORDER_URI    = "order"
 	DEPTH_URI    = ""
@@ -412,7 +412,7 @@ func (hashkey *Hashkey) GetDepth(size int, currency goex.CurrencyPair) (*goex.De
 
 	value := resp["timestamp"].(string)
 	timestamp, _ := time.Parse("2006-01-02T15:04:05.000Z", value)
-	return &goex.Depth{Pair:currency, Date:timestamp.Unix(), AskList: askList, BidList: bidList}, nil
+	return &goex.Depth{Pair: currency, Date: timestamp.Unix(), AskList: askList, BidList: bidList}, nil
 }
 
 func (hashkey *Hashkey) GetKlineRecords(currency goex.CurrencyPair, period, size, since int) ([]goex.Kline, error) {

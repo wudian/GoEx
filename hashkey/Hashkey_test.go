@@ -1,17 +1,17 @@
 package hashkey
 
 import (
-	"github.com/wudian/GoEx"
 	"github.com/stretchr/testify/require"
+	"github.com/wudian/GoEx"
 	"net/http"
 	"testing"
 )
 
 const (
-	PubKey    = ""
-	SecretKey = ""
+	PubKey     = ""
+	SecretKey  = ""
 	apiKeyHMAC = "MTU0NDUwODQ0NjI0NTAwMDAwMDAwNTQ="
-	secretKey = "vprggEasLOksdmut6WcFvuv4oUuAbewdkGJY1fgAvBw="
+	secretKey  = "vprggEasLOksdmut6WcFvuv4oUuAbewdkGJY1fgAvBw="
 )
 
 var htb *Hashkey
